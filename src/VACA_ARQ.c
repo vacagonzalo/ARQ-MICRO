@@ -3,7 +3,7 @@
 
 #include "functions.h"
 
-#define EJER01_LONGITUD 100
+#define EJER01_LONGITUD 1000
 
 int main( void )
 {
