@@ -86,6 +86,10 @@ Son los periféricos que forman parte del procesador y se diferencian del resto 
 Se utiliza el vector de interrupciones programables *NVIC*. Por ejemplo, una interrupción por timer con una prioridad de 5.
 
 14. ¿Qué es el CMSIS? ¿Qué función cumple? ¿Quién lo provee? ¿Qué ventajas aporta?
+
+*Microcontroller Software Interface Standard*, es una capa de abstracción provista por ARM que simplifica la tarea del programador para interacturar con la arquitectura.
+La principal ventaja es la uniformidad que impone ARM a los fabricantes.
+
 15. Cuando ocurre una interrupción, asumiendo que está habilitada ¿Cómo opera el microprocesador para atender a la subrutina correspondiente? Explique con un ejemplo
 16. ¿Cómo cambia la operación de stacking al utilizar la unidad de punto flotante?
 17. Explique las características avanzadas de atención a interrupciones: tail chaining y late arrival.
