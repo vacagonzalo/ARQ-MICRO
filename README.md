@@ -78,6 +78,9 @@ El llamado a funciones se resuelve colocando los argumentos y el valor retornado
 * Se obtiene la 1ra instrucción indicada por el vector de reset.
 
 12. ¿Qué entiende por “core peripherals”? ¿Qué diferencia existe entre estos y el resto de los periféricos?
+
+Son los periféricos que forman parte del procesador y se diferencian del resto porque son necesarios para el funcionamiento de la arquitectura.
+
 13. ¿Cómo se implementan las prioridades de las interrupciones? Dé un ejemplo
 14. ¿Qué es el CMSIS? ¿Qué función cumple? ¿Quién lo provee? ¿Qué ventajas aporta?
 15. Cuando ocurre una interrupción, asumiendo que está habilitada ¿Cómo opera el microprocesador para atender a la subrutina correspondiente? Explique con un ejemplo
