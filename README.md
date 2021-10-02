@@ -35,6 +35,9 @@ Es una arquitectura que no puede operar directamente sobre la memoria. Solo pued
 Tiene un mapa de memoria plano de 4 GB.
 
 5. ¿Qué ventajas presenta el uso de los “shadowed pointers” del PSP y el MSP?
+
+Permite la conmutación por hardware de los punteros de pila para códigos corriendo en distintos niveles de privilegio. Esto es particularmente útil para la implementación de un sistema operativo.
+
 6. Describa los diferentes modos de privilegio y operación del Cortex M, sus relaciones y como se conmuta de uno al otro. Describa un ejemplo en el que se pasa del modo privilegiado a no priviligiado y nuevamente a privilegiado.
 7. ¿Qué se entiende por modelo de registros ortogonal? Dé un ejemplo
 8. ¿Qué ventajas presenta el uso de intrucciones de ejecución condicional (IT)? Dé un ejemplo
