@@ -56,6 +56,9 @@ Un ejemplo de pasar desde modo privilegiado a no privilegiado y de regreso es el
 Significa que el set de instrucciones y los registros varian de de forma independiente. Esto quiere decir que las instrucciones son comunes para todos los registros. Un ejemplo es aplicar una máscara con *AND*, se puede operar con cualquier registro.
 
 8. ¿Qué ventajas presenta el uso de intrucciones de ejecución condicional (IT)? Dé un ejemplo
+
+La principal ventaja es no destruir el pipeline al eliminar los saltos. Por elemplo: *ADDNE*, el "NE" significa que la función *ADD* solo se ejecuta si el "Z" del registro *PSR* es 1.
+
 9. Describa brevemente las excepciones más prioritarias (reset, NMI, Hardfault).
 10. Describa las funciones principales de la pila. ¿Cómo resuelve la arquitectura el llamado a funciones y su retorno?
 11. Describa la secuencia de reset del microprocesador.
