@@ -27,6 +27,9 @@ Existen 3 perfiles de familias: M, R y A.
 El set de intrucciones Thumb fué diseñado para crear una huella pequeña en la memoria. Esto se logra porque todas las instrucciones son de 16 bits, mientras que las instrucciones de ARM son todas de 32 bits. La solución final fué crear el set Thumb-2 que combina instrucciones de los 2 sets anteriores.
 
 3. ¿Qué entiende por arquitectura load-store? ¿Qué tipo de instrucciones no posee este tipo de arquitectura?
+
+Es una arquitectura que no puede operar directamente sobre la memoria. Solo puede leer el valor de una posición de memoria y copiarla en un registro o volcar el valor de un registro en una posición de memoria. La arquetectura no posee instrucciones que modifiquen directamente una posición de memoria.
+
 4. ¿Cómo es el mapa de memoria de la familia?
 5. ¿Qué ventajas presenta el uso de los “shadowed pointers” del PSP y el MSP?
 6. Describa los diferentes modos de privilegio y operación del Cortex M, sus relaciones y como se conmuta de uno al otro. Describa un ejemplo en el que se pasa del modo privilegiado a no priviligiado y nuevamente a privilegiado.
