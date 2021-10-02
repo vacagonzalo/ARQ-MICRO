@@ -60,6 +60,11 @@ Significa que el set de instrucciones y los registros varian de de forma indepen
 La principal ventaja es no destruir el pipeline al eliminar los saltos. Por elemplo: *ADDNE*, el "NE" significa que la función *ADD* solo se ejecuta si el "Z" del registro *PSR* es 1.
 
 9. Describa brevemente las excepciones más prioritarias (reset, NMI, Hardfault).
+
+* reset: reinicia el core, prioridad 3.
+* NMI: Non-Maskable Interrupt, prioridad 2.
+* HardFault: cuando no se pudo llamar al handler de error correspondiente, prioridad 1.
+
 10. Describa las funciones principales de la pila. ¿Cómo resuelve la arquitectura el llamado a funciones y su retorno?
 11. Describa la secuencia de reset del microprocesador.
 12. ¿Qué entiende por “core peripherals”? ¿Qué diferencia existe entre estos y el resto de los periféricos?
