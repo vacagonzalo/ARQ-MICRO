@@ -91,6 +91,13 @@ Se utiliza el vector de interrupciones programables *NVIC*. Por ejemplo, una int
 La principal ventaja es la uniformidad que impone ARM a los fabricantes.
 
 15. Cuando ocurre una interrupción, asumiendo que está habilitada ¿Cómo opera el microprocesador para atender a la subrutina correspondiente? Explique con un ejemplo
+
+* Se produce en pedido de interrupción de al menos 1 ciclo.
+* Se genera una señal *Level triggered interrupt request* que se mantiene hasta que la interrupción sea atendida.
+* El *NVIC* determina el inicio del código de interrupción a ejecutar.
+* Se almacena el contexto en el stack.
+* Se ejecuta el código.
+
 16. ¿Cómo cambia la operación de stacking al utilizar la unidad de punto flotante?
 17. Explique las características avanzadas de atención a interrupciones: tail chaining y late arrival.
 18. ¿Qué es el systick? ¿Por qué puede afirmarse que su implementación favorece la portabilidad de los sistemas operativos embebidos?
