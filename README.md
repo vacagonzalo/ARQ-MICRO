@@ -72,6 +72,11 @@ La función principal de la pila es guardar el "contexto" cuando se realiza el l
 El llamado a funciones se resuelve colocando los argumentos y el valor retornado en los registros de trabajo.
 
 11. Describa la secuencia de reset del microprocesador.
+
+* Se obtiene el valor del *Main Stack Pointer*
+* Se obtiene el vector de reset.
+* Se obtiene la 1ra instrucción indicada por el vector de reset.
+
 12. ¿Qué entiende por “core peripherals”? ¿Qué diferencia existe entre estos y el resto de los periféricos?
 13. ¿Cómo se implementan las prioridades de las interrupciones? Dé un ejemplo
 14. ¿Qué es el CMSIS? ¿Qué función cumple? ¿Quién lo provee? ¿Qué ventajas aporta?
