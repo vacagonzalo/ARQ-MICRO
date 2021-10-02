@@ -31,6 +31,9 @@ El set de intrucciones Thumb fué diseñado para crear una huella pequeña en la
 Es una arquitectura que no puede operar directamente sobre la memoria. Solo puede leer el valor de una posición de memoria y copiarla en un registro o volcar el valor de un registro en una posición de memoria. La arquetectura no posee instrucciones que modifiquen directamente una posición de memoria.
 
 4. ¿Cómo es el mapa de memoria de la familia?
+
+Tiene un mapa de memoria plano de 4 GB.
+
 5. ¿Qué ventajas presenta el uso de los “shadowed pointers” del PSP y el MSP?
 6. Describa los diferentes modos de privilegio y operación del Cortex M, sus relaciones y como se conmuta de uno al otro. Describa un ejemplo en el que se pasa del modo privilegiado a no priviligiado y nuevamente a privilegiado.
 7. ¿Qué se entiende por modelo de registros ortogonal? Dé un ejemplo
