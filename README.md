@@ -17,6 +17,11 @@ Existen 3 perfiles de familias: M, R y A.
 ## Cortex M
 
 1. Describa brevemente las diferencias entre las familias de procesadores Cortex M0, M3 y M4.
+
+* M0: Implementación mínima para bajo consumo y bajo costo. Busca reemplazar las arquitecturas de 8 bits.
+* M3: Mayor performance frente a M0.
+* M4: Se agregan funcionalidades para el procesamiento digital de señales.
+
 2. ¿Por qué se dice que el set de instrucciones Thumb permite mayor densidad de código? Explique
 3. ¿Qué entiende por arquitectura load-store? ¿Qué tipo de instrucciones no posee este tipo de arquitectura?
 4. ¿Cómo es el mapa de memoria de la familia?
