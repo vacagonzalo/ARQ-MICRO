@@ -39,6 +39,18 @@ Tiene un mapa de memoria plano de 4 GB.
 Permite la conmutación por hardware de los punteros de pila para códigos corriendo en distintos niveles de privilegio. Esto es particularmente útil para la implementación de un sistema operativo.
 
 6. Describa los diferentes modos de privilegio y operación del Cortex M, sus relaciones y como se conmuta de uno al otro. Describa un ejemplo en el que se pasa del modo privilegiado a no priviligiado y nuevamente a privilegiado.
+
+Existen 2 modos de privilegios: *privileged* y *non-privileged (user state)*.
+Inicialmente y por defecto, los dispositivos comienzan en el modo *privileged*.
+
+Para pasar de *privileged* a *non- privileged* se modifica por software el registro *CONTROL*.
+No es posible regresar al modo *privileged* por software.
+
+Para realizar el cambio se utilizan los modos de operación: *Thread* y *Handler*.
+Es el *Handler* de una interrupción quién puede regresar al modo *privileged*.
+
+Un ejemplo de pasar desde modo privilegiado a no privilegiado y de regreso es el flujo que genera un sistema operativo.
+
 7. ¿Qué se entiende por modelo de registros ortogonal? Dé un ejemplo
 8. ¿Qué ventajas presenta el uso de intrucciones de ejecución condicional (IT)? Dé un ejemplo
 9. Describa brevemente las excepciones más prioritarias (reset, NMI, Hardfault).
