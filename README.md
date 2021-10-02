@@ -82,6 +82,9 @@ El llamado a funciones se resuelve colocando los argumentos y el valor retornado
 Son los periféricos que forman parte del procesador y se diferencian del resto porque son necesarios para el funcionamiento de la arquitectura.
 
 13. ¿Cómo se implementan las prioridades de las interrupciones? Dé un ejemplo
+
+Se utiliza el vector de interrupciones programables *NVIC*. Por ejemplo, una interrupción por timer con una prioridad de 5.
+
 14. ¿Qué es el CMSIS? ¿Qué función cumple? ¿Quién lo provee? ¿Qué ventajas aporta?
 15. Cuando ocurre una interrupción, asumiendo que está habilitada ¿Cómo opera el microprocesador para atender a la subrutina correspondiente? Explique con un ejemplo
 16. ¿Cómo cambia la operación de stacking al utilizar la unidad de punto flotante?
