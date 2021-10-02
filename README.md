@@ -66,6 +66,11 @@ La principal ventaja es no destruir el pipeline al eliminar los saltos. Por elem
 * HardFault: cuando no se pudo llamar al handler de error correspondiente, prioridad 1.
 
 10. Describa las funciones principales de la pila. ¿Cómo resuelve la arquitectura el llamado a funciones y su retorno?
+
+La función principal de la pila es guardar el "contexto" cuando se realiza el llamado a una función, con el fin de reestablecer los valores al regresar.
+
+El llamado a funciones se resuelve colocando los argumentos y el valor retornado en los registros de trabajo.
+
 11. Describa la secuencia de reset del microprocesador.
 12. ¿Qué entiende por “core peripherals”? ¿Qué diferencia existe entre estos y el resto de los periféricos?
 13. ¿Cómo se implementan las prioridades de las interrupciones? Dé un ejemplo
