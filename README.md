@@ -109,8 +109,19 @@ Tail chaining se utiliza para ejecutar en secuencia varias interrupciones que su
 Late arrival es cuando sucede una interrupción durante la operación de stacking de otra. Si esta última tiene una prioridad mayor, se ejecuta primero.
 
 18. ¿Qué es el systick? ¿Por qué puede afirmarse que su implementación favorece la portabilidad de los sistemas operativos embebidos?
+
+Es un timer especial que se utiliza para facilitar el desarrollo de los sistemas operativos.
+
 19. ¿Qué funciones cumple la unidad de protección de memoria (MPU)?
+
+Cumple la función de determinar que areas de memoria se pueden acceder con un determinado nivel de privilegio.
+
 20. ¿Cuántas regiones pueden configurarse como máximo? ¿Qué ocurre en caso de haber solapamientos de las regiones? ¿Qué ocurre con las zonas de memoria no cubiertas por las regiones definidas?
+
+Se pueden configurar regiones desde 32 bytes pero limitados a 4GB. Puede gestionar 8 regiones de memoria más una región de background.
+
+Las zonas no cubiertas quedan en el background.
+
 21. ¿Para qué se suele utilizar la excepción PendSV? ¿Cómo se relaciona su uso con el resto de las excepciones? Dé un ejemplo
 22. ¿Para qué se suele utilizar la excepción SVC? Expliquelo dentro de un marco de un
 sistema operativo embebido.
