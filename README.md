@@ -123,8 +123,13 @@ Se pueden configurar regiones desde 32 bytes pero limitados a 4GB. Puede gestion
 Las zonas no cubiertas quedan en el background.
 
 21. ¿Para qué se suele utilizar la excepción PendSV? ¿Cómo se relaciona su uso con el resto de las excepciones? Dé un ejemplo
+
+Se utiliza para operaciones de sistema operativo como syscall y cambios de contexto.
+
 22. ¿Para qué se suele utilizar la excepción SVC? Expliquelo dentro de un marco de un
 sistema operativo embebido.
+
+Para controlar el cambio de contexto. Para diferenciar el espacio de "kernel" y el espacio de "usuario".
 
 ## ISA
 
