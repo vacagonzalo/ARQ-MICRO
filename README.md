@@ -99,7 +99,15 @@ La principal ventaja es la uniformidad que impone ARM a los fabricantes.
 * Se ejecuta el código.
 
 16. ¿Cómo cambia la operación de stacking al utilizar la unidad de punto flotante?
+
+Se almacena la dirección dentro de la unidad de punto flotante.
+
 17. Explique las características avanzadas de atención a interrupciones: tail chaining y late arrival.
+
+Tail chaining se utiliza para ejecutar en secuencia varias interrupciones que surgieron al mismo tiempo o antes de que se termine de ejecutar la primera.
+
+Late arrival es cuando sucede una interrupción durante la operación de stacking de otra. Si esta última tiene una prioridad mayor, se ejecuta primero.
+
 18. ¿Qué es el systick? ¿Por qué puede afirmarse que su implementación favorece la portabilidad de los sistemas operativos embebidos?
 19. ¿Qué funciones cumple la unidad de protección de memoria (MPU)?
 20. ¿Cuántas regiones pueden configurarse como máximo? ¿Qué ocurre en caso de haber solapamientos de las regiones? ¿Qué ocurre con las zonas de memoria no cubiertas por las regiones definidas?
