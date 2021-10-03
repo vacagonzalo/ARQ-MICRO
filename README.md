@@ -134,7 +134,16 @@ Para controlar el cambio de contexto. Para diferenciar el espacio de "kernel" y 
 ## ISA
 
 1. ¿Qué son los sufijos y para qué se los utiliza? Dé un ejemplo
+
+Los sufijos amplian la funcionalidad de las instrucciones, permiten que actualicen las banderas APSR o se puede poner un condicional a la ejecución de la instrucción. Ejemplo: *MOVEQ R0, R1*, se realiza la operación si Z = 1
+
 2. ¿Para qué se utiliza el sufijo ‘s’? Dé un ejemplo
+
+Se utiliza para actualizar el APSR. Por ejemplo *SUBS* actualiza *Z* si la resta da cero.
+
 3. ¿Qué utilidad tiene la implementación de instrucciones de aritmética saturada? Dé un ejemplo con operaciones con datos de 8 bits.
+
+Evita el overflow y el salto a un valor en el otro extremo de la escala. Un ejemplo es en el procesamiento de una señal analógica (audio por ejemplo).
+
 4. Describa brevemente la interfaz entre assembler y C ¿Cómo se reciben los argumentos de las funciones? ¿Cómo se devuelve el resultado? ¿Qué registros deben guardarse en la pila antes de ser modificados?
 5. ¿Qué es una instrucción SIMD? ¿En qué se aplican y que ventajas reporta su uso? Dé un ejemplo.
