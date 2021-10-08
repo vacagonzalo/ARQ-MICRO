@@ -36,7 +36,7 @@ productoEscalar32:
 productoEscalar16:
 	push {r4-r5}
 	.nextProductoEscalar16:
-		ldh  r5, [r0], 2
+		ldrh  r5, [r0], 2
 		mul  r4, r5, r3
 		strh r4, [r1], 2
 		subs r2, 1
