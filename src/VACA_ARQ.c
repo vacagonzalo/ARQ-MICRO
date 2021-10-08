@@ -50,7 +50,7 @@ int main( void )
 	///////////////////////////////////////////////////////////////////////////
 	// Resolución ejercicio 3
 	///////////////////////////////////////////////////////////////////////////
-	printf("\n\rEjercicio 2\n\r");
+	printf("\n\rEjercicio 3\n\r");
 	uint16_t vector16_1[LONGITUD] = {1};
 	uint16_t vector16_2[LONGITUD] = {0};
 
@@ -63,6 +63,22 @@ int main( void )
 	productoEscalar16(vector16_1, vector16_2, LONGITUD, 2);
 	ciclos = DWT->CYCCNT;
 	printf("Prod esc 16 ASM : %d ciclos\n\r", ciclos);
+
+
+	///////////////////////////////////////////////////////////////////////////
+	// Resolución ejercicio 4
+	///////////////////////////////////////////////////////////////////////////
+	printf("\n\rEjercicio 4\n\r");
+
+	DWT->CYCCNT = 0;
+	c_productoEscalar12(vector16_1, vector16_2, LONGITUD, 2);
+	ciclos = DWT->CYCCNT;
+	printf("Prod esc 12 C  : %d ciclos\n\r", ciclos);
+
+	DWT->CYCCNT = 0;
+	productoEscalar12(vector16_1, vector16_2, LONGITUD, 2);
+	ciclos = DWT->CYCCNT;
+	printf("Prod esc 12 ASM : %d ciclos\n\r", ciclos);
 
 
 	while( true ) {

@@ -5,6 +5,7 @@
 .global zeros
 .global productoEscalar32
 .global productoEscalar16
+.global productoEscalar12
 
 @ void zeros(uint32_t * vector, uint32_t longitud)
 .thumb_func
@@ -36,10 +37,25 @@ productoEscalar32:
 productoEscalar16:
 	push {r4-r5}
 	.nextProductoEscalar16:
-		ldrh  r5, [r0], 2
+		ldrh r5, [r0], 2
 		mul  r4, r5, r3
 		strh r4, [r1], 2
 		subs r2, 1
 		bne .nextProductoEscalar16
+	pop {r4-r5}
+	bx  lr
+
+
+@ void productoEscalar12(uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitud, uint16_t escalar)
+.thumb_func
+productoEscalar12:
+	push {r4-r5}
+	.nextProductoEscalar12:
+		ldrh r5, [r0], 2
+		mul  r4, r5, r3
+		usat r4, 12, r4 @ breakpoint
+		strh r4, [r1], 2
+		subs r2, 1
+		bne .nextProductoEscalar12
 	pop {r4-r5}
 	bx  lr
