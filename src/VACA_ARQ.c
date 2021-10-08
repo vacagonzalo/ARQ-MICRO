@@ -2,47 +2,51 @@
 #include "sapi.h"
 
 #include "functions.h"
+#include "cmsis.h"
 
 #define EJER01_LONGITUD 1000
 
 int main( void )
 {
 	boardInit();
-	tick_t timestamp_start;
-	tick_t timestamp_end;
-	tick_t time;
+	DWT->CTRL |= 1 << DWT_CTRL_CYCCNTENA_Pos;
+	uint32_t ciclos = 0;
 
+	///////////////////////////////////////////////////////////////////////////
+	// Resolución ejercicio 1
 	///////////////////////////////////////////////////////////////////////////
 	printf("\n\rEjercicio 1\n\r");
 	uint32_t vector[EJER01_LONGITUD];
 	uint32_t longitud = EJER01_LONGITUD;
 
-	timestamp_start = tickRead();
+	DWT->CYCCNT = 0;
 	c_zeros(vector, longitud);
-	timestamp_end = tickRead();
-	time = timestamp_end - timestamp_start;
-	printf("zeros C: %dms\n\r", time);
+	ciclos = DWT->CYCCNT;
+	printf("zeros C  : %d ciclos\n\r", ciclos);
 
-	timestamp_start = tickRead();
+	DWT->CYCCNT = 0;
 	zeros(vector, longitud);
-	timestamp_end = tickRead();
-	time = timestamp_end - timestamp_start;
-	printf("zeros ASM: %dms\n\r", time);
+	ciclos = DWT->CYCCNT;
+	printf("zeros ASM: %d ciclos\n\r", ciclos);
+
+
+	///////////////////////////////////////////////////////////////////////////
+	// Resolución ejercicio 2
 	///////////////////////////////////////////////////////////////////////////
 	printf("\n\rEjercicio 2\n\r");
 	uint32_t vector2[EJER01_LONGITUD];
 
-	timestamp_start = tickRead();
+	DWT->CYCCNT = 0;
 	c_productoEscalar32(vector, vector2, EJER01_LONGITUD, 5);
-	timestamp_end = tickRead();
-	time = timestamp_end - timestamp_start;
-	printf("Prod esc 32 C: %dms\n\r", time);
+	ciclos = DWT->CYCCNT;
+	printf("Prod esc 32 C  : %d ciclos\n\r", ciclos);
 
-	timestamp_start = tickRead();
+	DWT->CYCCNT = 0;
 	productoEscalar32(vector, vector2, EJER01_LONGITUD, 5);
-	timestamp_end = tickRead();
-	time = timestamp_end - timestamp_start;
-	printf("Prod esc 32 ASM: %dms\n\r", time);
+	ciclos = DWT->CYCCNT;
+	printf("Prod esc 32 ASM: %d ciclos\n\r", ciclos);
+
+
 	while( true ) {
 		gpioToggle(LED1);
 		delay(500);
