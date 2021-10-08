@@ -4,7 +4,7 @@
 #include "functions.h"
 #include "cmsis.h"
 
-#define EJER01_LONGITUD 1000
+#define LONGITUD 1000
 
 int main( void )
 {
@@ -16,8 +16,8 @@ int main( void )
 	// Resolución ejercicio 1
 	///////////////////////////////////////////////////////////////////////////
 	printf("\n\rEjercicio 1\n\r");
-	uint32_t vector[EJER01_LONGITUD];
-	uint32_t longitud = EJER01_LONGITUD;
+	uint32_t vector[LONGITUD];
+	uint32_t longitud = LONGITUD;
 
 	DWT->CYCCNT = 0;
 	c_zeros(vector, longitud);
@@ -34,17 +34,35 @@ int main( void )
 	// Resolución ejercicio 2
 	///////////////////////////////////////////////////////////////////////////
 	printf("\n\rEjercicio 2\n\r");
-	uint32_t vector2[EJER01_LONGITUD];
+	uint32_t vector2[LONGITUD];
 
 	DWT->CYCCNT = 0;
-	c_productoEscalar32(vector, vector2, EJER01_LONGITUD, 5);
+	c_productoEscalar32(vector, vector2, LONGITUD, 5);
 	ciclos = DWT->CYCCNT;
 	printf("Prod esc 32 C  : %d ciclos\n\r", ciclos);
 
 	DWT->CYCCNT = 0;
-	productoEscalar32(vector, vector2, EJER01_LONGITUD, 5);
+	productoEscalar32(vector, vector2, LONGITUD, 5);
 	ciclos = DWT->CYCCNT;
 	printf("Prod esc 32 ASM: %d ciclos\n\r", ciclos);
+
+
+	///////////////////////////////////////////////////////////////////////////
+	// Resolución ejercicio 3
+	///////////////////////////////////////////////////////////////////////////
+	printf("\n\rEjercicio 2\n\r");
+	uint16_t vector16_1[LONGITUD] = {1};
+	uint16_t vector16_2[LONGITUD] = {0};
+
+	DWT->CYCCNT = 0;
+	c_productoEscalar16(vector16_1, vector16_2, LONGITUD, 2);
+	ciclos = DWT->CYCCNT;
+	printf("Prod esc 16 C  : %d ciclos\n\r", ciclos);
+
+	DWT->CYCCNT = 0;
+	productoEscalar16(vector16_1, vector16_2, LONGITUD, 2);
+	ciclos = DWT->CYCCNT;
+	printf("Prod esc 16 ASM : %d ciclos\n\r", ciclos);
 
 
 	while( true ) {
