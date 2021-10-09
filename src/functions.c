@@ -70,3 +70,18 @@ int32_t c_max(int32_t * vectorIn, uint32_t longitud)
 	}
 	return (int32_t)pos;
 }
+
+void c_invertir(uint16_t * vector, uint32_t longitud)
+{
+	uint32_t leftIndx = 0;
+	uint32_t rightIndx = longitud - 1;
+	uint32_t aux = 0;
+	while( leftIndx < rightIndx)
+	{
+		aux = vector[leftIndx];
+		vector[leftIndx] = vector[rightIndx];
+		vector[rightIndx] = aux;
+		leftIndx++;
+		rightIndx--;
+	}
+}
