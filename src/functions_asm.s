@@ -66,7 +66,7 @@ productoEscalar12:
 
 @ void filtroVentana10(uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitudVectorIn)
 filtroVentana10:
-	push {r4-r10}
+	push {r4-r12}
 	mov r3, r1
 	mov r4, r2
 	mov r5, 0
@@ -84,7 +84,9 @@ filtroVentana10:
 		.fv10L3: @ acumulo vectorIn en vectorOut
 			ldrh r7, [r3], 2
 			udiv r8, r7, r6
-			strh r8, [r4], 2
+			ldrh r11, [r4]
+			add r12, r11, r8
+			strh r12, [r4], 2
 			subs r5, 1
 			bne .fv10L3
 		@ Preparo los vectores para una nueva acumulación
@@ -98,7 +100,7 @@ filtroVentana10:
 		add r10, 1
 		subs r6, 1
 		bne .fv10L2
-	pop {r4-r10}
+	pop {r4-r12}
 	bx lr
 
 
