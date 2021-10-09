@@ -95,6 +95,22 @@ int main( void )
 	ciclos = DWT->CYCCNT;
 	printf("Filtro 10 ASM : %d ciclos\n\r", ciclos);
 
+
+	///////////////////////////////////////////////////////////////////////////
+	// Resolución ejercicio 6
+	///////////////////////////////////////////////////////////////////////////
+	printf("\n\rEjercicio 6\n\r");
+
+	DWT->CYCCNT = 0;
+	c_pack32to16(vector, vector16_2, LONGITUD);
+	ciclos = DWT->CYCCNT;
+	printf("Filtro 10 C  : %d ciclos\n\r", ciclos);
+
+	DWT->CYCCNT = 0;
+	pack32to16(vector, vector16_2, LONGITUD);
+	ciclos = DWT->CYCCNT;
+	printf("Filtro 10 ASM : %d ciclos\n\r", ciclos);
+
 	while( true ) {
 		gpioToggle(LED1);
 		delay(500);

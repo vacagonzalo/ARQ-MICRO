@@ -49,3 +49,11 @@ void c_filtroVentana10(uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longi
 		vectorOut[i] = vectorOut[i] / winSize;
 	}
 }
+
+void c_pack32to16 (int32_t * vectorIn, int16_t *vectorOut, uint32_t longitud)
+{
+	for(uint32_t i = 0; i < longitud; ++i)
+	{
+		vectorOut[i] = (uint16_t)(vectorIn[i]>>16);
+	}
+}

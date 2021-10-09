@@ -23,4 +23,7 @@ void c_productoEscalar12(uint16_t * vectorIn, uint16_t * vectorOut, uint32_t lon
 extern void filtroVentana10(uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitudVectorIn);
 void c_filtroVentana10(uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitudVectorIn);
 
+// Ejercicio 06
+extern void pack32to16(int32_t * vectorIn, int16_t *vectorOut, uint32_t longitud);
+void c_pack32to16(int32_t * vectorIn, int16_t *vectorOut, uint32_t longitud);
 #endif /* PROGRAMS_VACA_ARQ_INC_FUNCTIONS_H_ */

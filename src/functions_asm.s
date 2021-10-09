@@ -7,6 +7,8 @@
 .global productoEscalar16
 .global productoEscalar12
 .global filtroVentana10
+.global pack32to16
+
 
 @ void zeros(uint32_t * vector, uint32_t longitud)
 .thumb_func
@@ -97,4 +99,19 @@ filtroVentana10:
 		subs r6, 1
 		bne .fv10L2
 	pop {r4-r10}
+	bx lr
+
+
+@pack32to16(int32_t * vectorIn, int16_t *vectorOut, uint32_t longitud)
+.thumb_func
+pack32to16:
+	push {r4}
+	.packL1:
+		ldr  r4, [r0], 4
+		ror  r4, 16
+		and  r4, 0x00ff
+		strh r4, [r1], 2
+		subs r2, 1
+		bne .packL1
+	pop {r4}
 	bx lr
