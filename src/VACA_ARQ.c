@@ -104,12 +104,12 @@ int main( void )
 	DWT->CYCCNT = 0;
 	c_pack32to16(vector, vector16_2, LONGITUD);
 	ciclos = DWT->CYCCNT;
-	printf("Filtro 10 C  : %d ciclos\n\r", ciclos);
+	printf("pack C  : %d ciclos\n\r", ciclos);
 
 	DWT->CYCCNT = 0;
 	pack32to16(vector, vector16_2, LONGITUD);
 	ciclos = DWT->CYCCNT;
-	printf("Filtro 10 ASM : %d ciclos\n\r", ciclos);
+	printf("pack ASM : %d ciclos\n\r", ciclos);
 
 	while( true ) {
 		gpioToggle(LED1);

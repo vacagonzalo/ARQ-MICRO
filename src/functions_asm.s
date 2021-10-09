@@ -89,8 +89,8 @@ filtroVentana10:
 			bne .fv10L3
 		@ Preparo los vectores para una nueva acumulación
 		@ "muevo" vectorIn a la izquierda y limito en 1 la longitud
+		mov r3, r0
 		mov r4, r1
-		mov r4, r0
 		add r4, r9
 		add r9, 2
 		mov r5, r2
