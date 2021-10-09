@@ -26,4 +26,8 @@ void c_filtroVentana10(uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longi
 // Ejercicio 06
 extern void pack32to16(int32_t * vectorIn, int16_t *vectorOut, uint32_t longitud);
 void c_pack32to16(int32_t * vectorIn, int16_t *vectorOut, uint32_t longitud);
+
+// Ejercicio 07
+extern int32_t max(int32_t * vectorIn, uint32_t longitud);
+int32_t c_max(int32_t * vectorIn, uint32_t longitud);
 #endif /* PROGRAMS_VACA_ARQ_INC_FUNCTIONS_H_ */

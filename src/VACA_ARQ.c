@@ -111,6 +111,22 @@ int main( void )
 	ciclos = DWT->CYCCNT;
 	printf("pack ASM : %d ciclos\n\r", ciclos);
 
+
+	///////////////////////////////////////////////////////////////////////////
+	// Resolución ejercicio 7
+	///////////////////////////////////////////////////////////////////////////
+	printf("\n\rEjercicio 7\n\r");
+
+	DWT->CYCCNT = 0;
+	c_max(vector, LONGITUD);
+	ciclos = DWT->CYCCNT;
+	printf("max C  : %d ciclos\n\r", ciclos);
+
+	DWT->CYCCNT = 0;
+	max(vector, LONGITUD);
+	ciclos = DWT->CYCCNT;
+	printf("max ASM : %d ciclos\n\r", ciclos);
+
 	while( true ) {
 		gpioToggle(LED1);
 		delay(500);

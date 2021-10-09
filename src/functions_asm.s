@@ -8,6 +8,7 @@
 .global productoEscalar12
 .global filtroVentana10
 .global pack32to16
+.global max
 
 
 @ void zeros(uint32_t * vector, uint32_t longitud)
@@ -116,4 +117,26 @@ pack32to16:
 		subs r2, 1
 		bne .packL1
 	pop {r4}
+	bx lr
+
+
+@ int32_t max(int32_t * vectorIn, uint32_t longitud)
+.thumb_func
+max:
+	push {r4-r7}
+	mov r4, 0 @ pos vin
+	mov r5, 0 @ pos max
+	mov r6, 0 @ val max
+	.maxL1:
+		ldr  r7, [r1], 4
+		cmp  r7, r6
+		bcs .maxFalse
+			mov r6, r7
+			mov r5, r4
+		.maxFalse:
+		add r4, 1
+		subs r2, 1
+		bne  .maxL1
+	mov r0, r5
+	pop {r4-r7}
 	bx lr
