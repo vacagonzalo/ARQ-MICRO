@@ -6,6 +6,7 @@
 .global productoEscalar32
 .global productoEscalar16
 .global productoEscalar12
+.global filtroVentana10
 
 @ void zeros(uint32_t * vector, uint32_t longitud)
 .thumb_func
@@ -59,3 +60,41 @@ productoEscalar12:
 		bne .nextProductoEscalar12
 	pop {r4-r5}
 	bx  lr
+
+
+@ void filtroVentana10(uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitudVectorIn)
+filtroVentana10:
+	push {r4-r10}
+	mov r3, r1
+	mov r4, r2
+	mov r5, 0
+	.fv10L1: @ n veces (inicio en 0 vectorOut)
+		strh r5, [r3], 2
+		subs r4, 1
+		bne .fv10L1
+	mov r3, r0
+	mov r4, r1
+	mov r5, r2
+	mov r6, 10
+	mov r9, 2
+	mov r10, 1
+	.fv10L2: @ 10 veces
+		.fv10L3: @ acumulo vectorIn en vectorOut
+			ldrh r7, [r3], 2
+			udiv r8, r7, r6
+			strh r8, [r4], 2
+			subs r5, 1
+			bne .fv10L3
+		@ Preparo los vectores para una nueva acumulación
+		@ "muevo" vectorIn a la izquierda y limito en 1 la longitud
+		mov r4, r1
+		mov r4, r0
+		add r4, r9
+		add r9, 2
+		mov r5, r2
+		sub r5, r10
+		add r10, 1
+		subs r6, 1
+		bne .fv10L2
+	pop {r4-r10}
+	bx lr

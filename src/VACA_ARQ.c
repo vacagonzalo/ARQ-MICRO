@@ -80,6 +80,20 @@ int main( void )
 	ciclos = DWT->CYCCNT;
 	printf("Prod esc 12 ASM : %d ciclos\n\r", ciclos);
 
+	///////////////////////////////////////////////////////////////////////////
+	// Resolución ejercicio 5
+	///////////////////////////////////////////////////////////////////////////
+	printf("\n\rEjercicio 5\n\r");
+
+	DWT->CYCCNT = 0;
+	c_filtroVentana10(vector16_1, vector16_2, LONGITUD);
+	ciclos = DWT->CYCCNT;
+	printf("Filtro 10 C  : %d ciclos\n\r", ciclos);
+
+	DWT->CYCCNT = 0;
+	filtroVentana10(vector16_1, vector16_2, LONGITUD);
+	ciclos = DWT->CYCCNT;
+	printf("Filtro 10 ASM : %d ciclos\n\r", ciclos);
 
 	while( true ) {
 		gpioToggle(LED1);
