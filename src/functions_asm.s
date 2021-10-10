@@ -147,17 +147,15 @@ max:
 .thumb_func
 invertir:
 	push {r4-r6}
-	mov r2, 4
+	mov r2, 2
 	mul r3, r2, r1
-	sub r3, 4
+	sub r3, 2
 	add r4, r3, r0 @ ultima pos de mem.
 	.invLoop1:
-		ldrh r5, [r0]
-		ldrh r6, [r4]
+		ldrh r5, [r0],  2
+		ldrh r6, [r4], -2
 		strh r6, [r0]
 		strh r5, [r4]
-		add r0, 4
-		sub r4, 4
 		cmp r4, r0
 		bcs .invLoop1
 	pop {r4-r6}
