@@ -124,23 +124,23 @@ pack32to16:
 @ int32_t max(int32_t * vectorIn, uint32_t longitud)
 .thumb_func
 max:
-	push {r4-r7}
-	mov r4, 0 @ pos vin
-	mov r5, 0 @ pos max
-	mov r6, 0 @ val max
-	.maxL1:
-		ldr  r7, [r1], 4
-		cmp  r7, r6
-		bcs .maxFalse
-			mov r6, r7
-			mov r5, r4
-		.maxFalse:
-		add r4, 1
-		subs r2, 1
-		bne  .maxL1
-	mov r0, r5
-	pop {r4-r7}
-	bx lr
+    push {r4-r5}
+    mov r5, r1
+    mov r3, r1
+    ldr r4, [r0],4
+    sub r1, 1
+    .maxL1:
+        ldr r2, [r0],4
+        cmp r4, r2
+        bge .no_max
+        mov r3, r1
+        mov r4, r2
+        .no_max:
+        subs r1, 1
+        bne .maxL1
+    sub r0, r5, r3
+    pop	{r4-r5}
+    bx lr
 
 
 @ void invertir(uint16_t * vector, uint32_t longitud)

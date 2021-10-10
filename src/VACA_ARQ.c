@@ -123,7 +123,7 @@ int main( void )
 	printf("max C  : %d ciclos\n\r", ciclos);
 
 	DWT->CYCCNT = 0;
-	//max(vector, LONGITUD);
+	max(vector, LONGITUD);
 	ciclos = DWT->CYCCNT;
 	printf("max ASM : %d ciclos\n\r", ciclos);
 
