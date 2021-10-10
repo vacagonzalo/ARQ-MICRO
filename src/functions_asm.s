@@ -163,28 +163,60 @@ invertir:
 	pop {r4-r6}
 	bx lr
 
-@ void eco(int16_t * vector, uint32_t longitud
+@ void eco(int16_t * vector, int16_t eco, uint32_t longitud)
+@ r0: audio original
+@ r1: audio con eco
+@ r2: longitud
+@ 882 son 20ms
 .thumb_func
 eco:
-	push {r4-r5}
-	sub  r1, #882 @ 20ms
-	add  r2, r0, #882
-	mov  r5, #2
-	.ecoL1:
-		ldrh r3, [r0], #2
-		sdiv r3, r3, r5
-		ldrh r4, [r2]
-		add  r4, r4, r3
-		strh r4, [r2]
-		add  r2, #2
-		subs r1, #2
-		bne .ecoL1
-	pop {r4-r5}
+	push {r4-r7}
+	mov r3, #882
+	mov r4, r0 @ copia
+	.parteSinEco:
+		ldrsh r5, [r4], #2
+		strh  r5, [r1], #2
+		subs  r3, #1
+		bne .parteSinEco
+
+	sub r2, #882
+	mov r3, #2
+	.parteConEco:
+		ldrsh r5, [r4], #2
+		ldrsh r6, [r0], #2
+		sdiv  r7, r6, r2
+		add   r5, r5, r7
+		ssat  r5, #16, r5
+		strh  r5, [r1], #2
+		subs  r2, #1
+		bne .parteConEco
+	pop {r4-r7}
 	bx lr
 
 
-@ void ecoSIMD(int16_t * vector, uint32_t longitud)
+@ void ecoSIMD(int16_t * audio, int16_t * eco, uint32_t longitud)
 .thumb_func
 ecoSIMD:
+	push {r4-r7}
+	mov r3, #882
+	mov r4, r0 @ copia
+	.parteSinEco2:
+		ldrsh r5, [r4], #2
+		strh r5, [r1], #2
+		subs r3, #1
+		bne .parteSinEco2
+
+	sub r2, #882
+	mov r3, #2
+	.parteConEco2:
+		ldrsh r5, [r4], #2
+		ldrsh r6, [r0], #2
+		sdiv  r7, r6, r2
+		add   r5, r5, r7
+		ssat  r5, #16, r5
+		strh  r5, [r1], #2
+		subs  r2, #1
+		bne .parteConEco2
+	pop {r4-r7}
 	bx lr
 
