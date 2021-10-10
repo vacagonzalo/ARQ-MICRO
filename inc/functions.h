@@ -36,6 +36,7 @@ extern void invertir(uint16_t * vector, uint32_t longitud);
 void c_invertir(uint16_t * vector, uint32_t longitud);
 
 // Ejercicio 10
+extern void ecoSIMD(int16_t * vector, uint32_t longitud);
 extern void eco(int16_t * vector, uint32_t longitud);
 void c_eco(int16_t * vector, uint32_t longitud);
 #endif /* PROGRAMS_VACA_ARQ_INC_FUNCTIONS_H_ */

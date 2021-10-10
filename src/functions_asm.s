@@ -11,14 +11,16 @@
 .global max
 .global invertir
 .global eco
+.global ecoSIMD
+
 
 @ void zeros(uint32_t * vector, uint32_t longitud)
 .thumb_func
 zeros:
-	mov r2,0
+	mov r2, #0
 	.next_zero:
-		str  r2,[r0],4
-		subs r1,1
+		str  r2, [r0], #4
+		subs r1, #1
 		bne  .next_zero
 	bx lr
 
@@ -28,9 +30,9 @@ zeros:
 productoEscalar32:
 	push {r4-r5}
 	.nextProductoEscalar32:
-		ldr  r5, [r0], 4
+		ldr  r5, [r0], #4
 		mul  r4, r5, r3
-		str  r4, [r1], 4
+		str  r4, [r1], #4
 		subs r2, 1
 		bne  .nextProductoEscalar32
 	pop {r4-r5}
@@ -42,9 +44,9 @@ productoEscalar32:
 productoEscalar16:
 	push {r4-r5}
 	.nextProductoEscalar16:
-		ldrh r5, [r0], 2
+		ldrh r5, [r0], #2
 		mul  r4, r5, r3
-		strh r4, [r1], 2
+		strh r4, [r1], #2
 		subs r2, 1
 		bne .nextProductoEscalar16
 	pop {r4-r5}
@@ -56,10 +58,10 @@ productoEscalar16:
 productoEscalar12:
 	push {r4-r5}
 	.nextProductoEscalar12:
-		ldrh r5, [r0], 2
+		ldrh r5, [r0], #2
 		mul  r4, r5, r3
 		usat r4, 12, r4 @ breakpoint
-		strh r4, [r1], 2
+		strh r4, [r1], #2
 		subs r2, 1
 		bne .nextProductoEscalar12
 	pop {r4-r5}
@@ -71,36 +73,36 @@ filtroVentana10:
 	push {r4-r12}
 	mov r3, r1
 	mov r4, r2
-	mov r5, 0
+	mov r5, #0
 	.fv10L1: @ n veces (inicio en 0 vectorOut)
-		strh r5, [r3], 2
-		subs r4, 1
+		strh r5, [r3], #2
+		subs r4, #1
 		bne .fv10L1
 	mov r3, r0
 	mov r4, r1
 	mov r5, r2
 	mov r6, 10
-	mov r9, 2
-	mov r10, 1
+	mov r9, #2
+	mov r10,#1
 	.fv10L2: @ 10 veces
 		.fv10L3: @ acumulo vectorIn en vectorOut
-			ldrh r7, [r3], 2
+			ldrh r7, [r3], #2
 			udiv r8, r7, r6
 			ldrh r11, [r4]
 			add r12, r11, r8
-			strh r12, [r4], 2
-			subs r5, 1
+			strh r12, [r4], #2
+			subs r5, #1
 			bne .fv10L3
 		@ Preparo los vectores para una nueva acumulación
 		@ "muevo" vectorIn a la izquierda y limito en 1 la longitud
 		mov r3, r0
 		mov r4, r1
 		add r4, r9
-		add r9, 2
+		add r9, #2
 		mov r5, r2
 		sub r5, r10
-		add r10, 1
-		subs r6, 1
+		add r10, #1
+		subs r6, #1
 		bne .fv10L2
 	pop {r4-r12}
 	bx lr
@@ -111,11 +113,11 @@ filtroVentana10:
 pack32to16:
 	push {r4}
 	.packL1:
-		ldr  r4, [r0], 4
+		ldr  r4, [r0], #4
 		ror  r4, 16
 		and  r4, 0x00ff
-		strh r4, [r1], 2
-		subs r2, 1
+		strh r4, [r1], #2
+		subs r2, #1
 		bne .packL1
 	pop {r4}
 	bx lr
@@ -127,16 +129,16 @@ max:
     push {r4-r5}
     mov r5, r1
     mov r3, r1
-    ldr r4, [r0],4
+    ldr r4, [r0], #4
     sub r1, 1
     .maxL1:
-        ldr r2, [r0],4
+        ldr r2, [r0], #4
         cmp r4, r2
         bge .no_max
         mov r3, r1
         mov r4, r2
         .no_max:
-        subs r1, 1
+        subs r1, #1
         bne .maxL1
     sub r0, r5, r3
     pop	{r4-r5}
@@ -147,13 +149,13 @@ max:
 .thumb_func
 invertir:
 	push {r4-r6}
-	mov r2, 2
+	mov r2, #2
 	mul r3, r2, r1
-	sub r3, 2
+	sub r3, #2
 	add r4, r3, r0 @ ultima pos de mem.
 	.invLoop1:
-		ldrh r5, [r0],  2
-		ldrh r6, [r4], -2
+		ldrh r5, [r0], #2
+		ldrh r6, [r4], #-2
 		strh r6, [r0]
 		strh r5, [r4]
 		cmp r4, r0
@@ -165,22 +167,24 @@ invertir:
 .thumb_func
 eco:
 	push {r4-r5}
-	sub  r1, 882 @ 20ms
-	add  r2, r0, 882
-	mov  r5, 2
+	sub  r1, #882 @ 20ms
+	add  r2, r0, #882
+	mov  r5, #2
 	.ecoL1:
-		ldrh r3, [r0], 2
+		ldrh r3, [r0], #2
 		sdiv r3, r3, r5
 		ldrh r4, [r2]
 		add  r4, r4, r3
 		strh r4, [r2]
-		add  r2, 2
-		subs r1, 2
+		add  r2, #2
+		subs r1, #2
 		bne .ecoL1
 	pop {r4-r5}
 	bx lr
 
 
-
-
+@ void ecoSIMD(int16_t * vector, uint32_t longitud)
+.thumb_func
+ecoSIMD:
+	bx lr
 

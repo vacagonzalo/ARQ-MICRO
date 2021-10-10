@@ -159,6 +159,11 @@ int main( void )
 	ciclos = DWT->CYCCNT;
 	printf("eco ASM : %d ciclos\n\r", ciclos);
 
+	DWT->CYCCNT = 0;
+	ecoSIMD(audio, 4092);
+	ciclos = DWT->CYCCNT;
+	printf("eco ASM SIMD: %d ciclos\n\r", ciclos);
+
 	while( true ) {
 		gpioToggle(LED1);
 		delay(500);
