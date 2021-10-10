@@ -143,6 +143,22 @@ int main( void )
 	ciclos = DWT->CYCCNT;
 	printf("max ASM : %d ciclos\n\r", ciclos);
 
+	///////////////////////////////////////////////////////////////////////////
+	// Resolución ejercicio 10
+	///////////////////////////////////////////////////////////////////////////
+	printf("\n\rEjercicio 10\n\r");
+	uint32_t audio[4092] = {0xF};
+
+	DWT->CYCCNT = 0;
+	c_eco(audio, 4092);
+	ciclos = DWT->CYCCNT;
+	printf("eco C  : %d ciclos\n\r", ciclos);
+
+	DWT->CYCCNT = 0;
+	eco(audio, 4092);
+	ciclos = DWT->CYCCNT;
+	printf("eco ASM : %d ciclos\n\r", ciclos);
+
 	while( true ) {
 		gpioToggle(LED1);
 		delay(500);

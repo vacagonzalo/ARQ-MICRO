@@ -10,7 +10,7 @@
 .global pack32to16
 .global max
 .global invertir
-
+.global eco
 
 @ void zeros(uint32_t * vector, uint32_t longitud)
 .thumb_func
@@ -161,7 +161,24 @@ invertir:
 	pop {r4-r6}
 	bx lr
 
-
+@ void eco(int16_t * vector, uint32_t longitud
+.thumb_func
+eco:
+	push {r4-r5}
+	sub  r1, 882 @ 20ms
+	add  r2, r0, 882
+	mov  r5, 2
+	.ecoL1:
+		ldrh r3, [r0], 2
+		sdiv r3, r3, r5
+		ldrh r4, [r2]
+		add  r4, r4, r3
+		strh r4, [r2]
+		add  r2, 2
+		subs r1, 2
+		bne .ecoL1
+	pop {r4-r5}
+	bx lr
 
 
 

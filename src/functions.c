@@ -85,3 +85,16 @@ void c_invertir(uint16_t * vector, uint32_t longitud)
 		rightIndx--;
 	}
 }
+
+// 1000ms --- 44100 muestras
+//   20ms --- x = 20 * 44100 / 1000
+// => x = 882 muestras
+void c_eco(int16_t * vector, uint32_t longitud)
+{
+	uint32_t i = 0;
+	uint32_t j = 882;
+	for(; j < longitud; ++i, ++j)
+	{
+		vector[j] += vector[i] / 2;
+	}
+}
