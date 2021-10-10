@@ -174,10 +174,10 @@ eco:
 	mov r3, #882
 	mov r4, r0 @ copia
 	.parteSinEco:
-		ldrsh r5, [r4], #2
-		strh  r5, [r1], #2
-		subs  r3, #1
-		bne .parteSinEco
+		ldr  r5, [r4], #4
+		str  r5, [r1], #4
+		subs r3, #2
+		bne  .parteSinEco
 
 	sub r2, #882
 	mov r3, #2
@@ -201,9 +201,9 @@ ecoSIMD:
 	mov r3, #882
 	mov r4, r0 @ copia
 	.parteSinEco2:
-		ldrsh r5, [r4], #2
-		strh r5, [r1], #2
-		subs r3, #1
+		ldr r5, [r4], #4
+		str r5, [r1], #4
+		subs r3, #2
 		bne .parteSinEco2
 
 	sub r2, #882
