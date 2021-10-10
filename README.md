@@ -146,4 +146,13 @@ Se utiliza para actualizar el APSR. Por ejemplo *SUBS* actualiza *Z* si la resta
 Evita el overflow y el salto a un valor en el otro extremo de la escala. Un ejemplo es en el procesamiento de una señal analógica (audio por ejemplo).
 
 4. Describa brevemente la interfaz entre assembler y C ¿Cómo se reciben los argumentos de las funciones? ¿Cómo se devuelve el resultado? ¿Qué registros deben guardarse en la pila antes de ser modificados?
+
+* La función se debe declarar como **extern** para evitar errores en la compilación
+* Se debe declarar un símbolo **.global** con el nombre de la función en el archivo **.s**
+* Si la función tiene retorno, este regresa por **R0**
+* Los registros **R0 R1 R2 R3** no requieren mayor precaución. Pero el resto deben ser puestos y quitados de la pila por el programadar (**push {r4-r6}** y **pop {r4-r6}** por ejemplo).
+
 5. ¿Qué es una instrucción SIMD? ¿En qué se aplican y que ventajas reporta su uso? Dé un ejemplo.
+
+Una instrucción SIMD opera múltiples datos a la vez. De tal manera que los bits de esos datos sumen 32.
+El ejemplo más simple es sumar todos los elementos de 2 vectores 8bits. Las instrucciones SIMD pueden operar con 4 datos a la vez, esto reduce la cantidad de loops un 75%.
