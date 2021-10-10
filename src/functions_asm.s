@@ -216,6 +216,7 @@ ecoSIMD:
 		ldr    r5, [r4], #4 @ 2 slots original
 		ldr    r6, [r0], #4 @ 2 slots eco
 		sadd16 r5, r5, r6   @ sumo 2 slots a la vez
+		ssat16 r5, #16, r5
 		str    r5, [r1], #4 @ guardo 2 slots a la vez
 		sub r2, #2
 		bne .parteConEco2
