@@ -195,6 +195,10 @@ eco:
 
 
 @ void ecoSIMD(int16_t * audio, int16_t * eco, uint32_t longitud)
+@ r0: audio original
+@ r1: audio con eco
+@ r2: longitud
+@ 882 son 20ms
 .thumb_func
 ecoSIMD:
 	push {r4-r7}
@@ -209,13 +213,11 @@ ecoSIMD:
 	sub r2, #882
 	mov r3, #2
 	.parteConEco2:
-		ldrsh r5, [r4], #2
-		ldrsh r6, [r0], #2
-		sdiv  r7, r6, r2
-		add   r5, r5, r7
-		ssat  r5, #16, r5
-		strh  r5, [r1], #2
-		subs  r2, #1
+		ldr    r5, [r4], #4 @ 2 slots original
+		ldr    r6, [r0], #4 @ 2 slots eco
+		sadd16 r5, r5, r6   @ sumo 2 slots a la vez
+		str    r5, [r1], #4 @ guardo 2 slots a la vez
+		sub r2, #2
 		bne .parteConEco2
 	pop {r4-r7}
 	bx lr
