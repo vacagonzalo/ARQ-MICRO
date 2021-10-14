@@ -185,7 +185,7 @@ eco:
 @ r0: audio original
 @ r1: audio con eco
 @ r2: longitud
-@ 882 son 20ms
+@ 882 son 20ms.
 .thumb_func
 ecoSIMD:
 	push {r4-r7}
